@@ -1,28 +1,3 @@
-// import React from 'react';
-
-// export default function Services() {
-//   const services = [
-//     "VFX Shots & Compositing",
-//     "2D/3D Animation",
-//     "Motion Graphics",
-//     "Storyboarding & Animatics",
-//     "Post-production & Color Grading",
-//   ];
-
-//   return (
-//     <section>
-//       <h2>Services</h2>
-//       <ul>
-//         {services.map((service, i) => (
-//           <li key={i}>{service}</li>
-//         ))}
-//       </ul>
-//     </section>
-//   );
-// }
-
-
-
 import React from "react";
 import { motion } from "framer-motion";
 import { HiCheckCircle } from "react-icons/hi";

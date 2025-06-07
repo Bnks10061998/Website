@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from "react";
 import ProjectCard from "./ProjectCard";
 import VideoModal from "./VideoModal";
+import video from '../assets/homevideo.mp4';
+import image from '../assets/environment.jpg';
 
 const projects = [
   {
@@ -8,26 +10,49 @@ const projects = [
     title: "Project One",
     description: "VFX shot for sci-fi short film",
     category: "VFX",
-    thumbnail: "/assets/project1-thumb.jpg",
-    video: "/assets/project1-demo.mp4",
+    thumbnail: image,
+    video: video,
   },
   {
     id: 2,
     title: "Project Two",
     description: "2D animation explainer video",
     category: "Animation",
-    thumbnail: "/assets/project2-thumb.jpg",
-    video: "/assets/project2-demo.mp4",
+    thumbnail: image,
+    video: video,
   },
   {
     id: 3,
     title: "Project Three",
     description: "Motion graphics for advertisement",
     category: "Motion Graphics",
-    thumbnail: "/assets/project3-thumb.jpg",
-    video: "/assets/project3-demo.mp4",
+    thumbnail: image,
+    video: video,
   },
-  // Add more projects with categories...
+  {
+    id: 4,
+    title: "Project Four",
+    description: "VFX shot for sci-fi short film",
+    category: "VFX",
+    thumbnail: image,
+    video: video,
+  },
+  {
+    id: 5,
+    title: "Project Five",
+    description: "2D animation explainer video",
+    category: "Animation",
+    thumbnail: image,
+    video: video,
+  },
+  {
+    id: 6,
+    title: "Project Six",
+    description: "Motion graphics for advertisement",
+    category: "Motion Graphics",
+    thumbnail: image,
+    video: video,
+  },
 ];
 
 // Unique categories for filtering
@@ -80,7 +105,9 @@ export default function Portfolio() {
   }, [filterCategory, searchTerm]);
 
   return (
-    <section className="min-h-screen bg-gray-50 px-6 py-16">
+    // <section className="min-h-screen bg-gray-50 px-6 py-16">
+    <section className="min-h-screen bg-gradient-to-b from-blue-100 via-white to-pink-100 rounded-2xl px-6 py-8">
+
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-5xl font-extrabold text-gray-900 mb-6">My Work</h2>
         <p className="text-lg text-gray-600 mb-10">
