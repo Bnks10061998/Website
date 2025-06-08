@@ -106,7 +106,7 @@ export default function Portfolio() {
 
   return (
     // <section className="min-h-screen bg-gray-50 px-6 py-16">
-    <section className="min-h-screen bg-gradient-to-b from-blue-100 via-white to-pink-100 rounded-2xl px-6 py-8">
+    <section className="max-w-6xl mx-auto px-8 py-8 bg-gradient-to-r from-indigo-50 via-white to-indigo-50 rounded-2xl shadow-2xl">
 
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-5xl font-extrabold text-gray-900 mb-6">My Work</h2>

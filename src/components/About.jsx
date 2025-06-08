@@ -5,7 +5,7 @@ import profileimage from '../assets/sudhan.jpg';
 export default function About() {
   return (
     <motion.section
-      className="max-w-6xl mx-auto px-8 py-16 mt-16 bg-gradient-to-r from-indigo-50 via-white to-indigo-50 rounded-2xl shadow-2xl"
+      className="max-w-6xl mx-auto px-8 py-8 bg-gradient-to-r from-indigo-50 via-white to-indigo-50 rounded-2xl shadow-2xl"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}

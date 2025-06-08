@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useRef, useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
   {
@@ -16,109 +16,84 @@ const testimonials = [
   },
 ];
 
-const variants = {
-  enter: (direction) => ({
-    x: direction > 0 ? 300 : -300,
-    opacity: 0,
-  }),
-  center: {
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction) => ({
-    x: direction < 0 ? 300 : -300,
-    opacity: 0,
-  }),
-};
-
 export default function Testimonials() {
-  const [[page, direction], setPage] = useState([0, 0]);
+  const [index, setIndex] = useState(0);
+  const cardWidth = 600; // Fixed width in px
 
-  // Auto-slide every 5 seconds
+  const handlePrev = () => {
+    setIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
-      paginate(1);
+      handleNext();
     }, 5000);
     return () => clearInterval(interval);
-  }, [page]);
-
-  const paginate = (newDirection) => {
-    setPage(([currentPage]) => {
-      let nextPage = currentPage + newDirection;
-      if (nextPage < 0) nextPage = testimonials.length - 1;
-      else if (nextPage >= testimonials.length) nextPage = 0;
-      return [nextPage, newDirection];
-    });
-  };
-
-  // Jump directly to a specific testimonial (dots)
-  const goToPage = (index) => {
-    if (index === page) return;
-    const newDirection = index > page ? 1 : -1;
-    setPage([index, newDirection]);
-  };
-
-  const testimonial = testimonials[page];
+  }, [index]);
 
   return (
-    <section className="max-w-4xl mx-auto px-8 py-20">
-      <h2 className="text-5xl font-extrabold text-indigo-900 mb-12 text-center border-b-4 border-indigo-600 pb-4">
+    <section className="max-w-6xl mx-auto px-4 py-10 relative bg-gradient-to-r from-indigo-50 via-white to-indigo-50 rounded-2xl shadow-2xl">
+      <h2 className="text-5xl font-extrabold text-indigo-900 mb-10 text-center border-b-4 border-indigo-600 pb-4">
         Testimonials
       </h2>
 
-      <div className="relative bg-white rounded-xl shadow-lg p-10 border-l-8 border-indigo-600 min-h-[180px] flex flex-col justify-center">
-        <AnimatePresence custom={direction} initial={false}>
-          <motion.blockquote
-            key={page}
-            custom={direction}
-            variants={variants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.2 },
-            }}
-            className="text-gray-800 text-xl italic mb-6"
+      <div className="relative w-full flex justify-center items-center">
+        {/* Card Slider */}
+        <div
+          className="w-full overflow-hidden"
+          style={{ maxWidth: `${cardWidth}px` }}
+        >
+          <div
+            className="flex transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${index * cardWidth}px)` }}
           >
-            “{testimonial.text}”
-            <footer className="text-indigo-700 font-semibold text-right mt-4">
-              — {testimonial.client}
-            </footer>
-          </motion.blockquote>
-        </AnimatePresence>
-
-        <div className="absolute bottom-6 right-6 flex space-x-4">
-          <button
-            onClick={() => paginate(-1)}
-            aria-label="Previous testimonial"
-            className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white p-3 shadow-lg transition"
-          >
-            ‹
-          </button>
-          <button
-            onClick={() => paginate(1)}
-            aria-label="Next testimonial"
-            className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white p-3 shadow-lg transition"
-          >
-            ›
-          </button>
+            {testimonials.map((t, i) => (
+              <div
+                key={i}
+                className="w-[600px] flex-shrink-0 bg-white rounded-xl shadow-lg p-6 border-l-8 border-indigo-600"
+              >
+                <blockquote className="text-gray-800 text-xl italic mb-4">
+                  “{t.text}”
+                </blockquote>
+                <footer className="text-indigo-700 font-semibold text-right">
+                  — {t.client}
+                </footer>
+              </div>
+            ))}
+          </div>
         </div>
+
+        {/* Arrows */}
+        <button
+          onClick={handlePrev}
+          className="absolute left-0 top-1/2 -translate-y-1/2 bg-white border border-indigo-200 p-2 rounded-full shadow hover:bg-indigo-100 z-10"
+        >
+          <ChevronLeft className="w-6 h-6 text-indigo-600" />
+        </button>
+        <button
+          onClick={handleNext}
+          className="absolute right-0 top-1/2 -translate-y-1/2 bg-white border border-indigo-200 p-2 rounded-full shadow hover:bg-indigo-100 z-10"
+        >
+          <ChevronRight className="w-6 h-6 text-indigo-600" />
+        </button>
       </div>
 
-      {/* Dots navigation */}
-      <div className="flex justify-center mt-8 space-x-4">
-        {testimonials.map((_, idx) => (
+      {/* Dots */}
+      {/* <div className="flex justify-center mt-6 space-x-4">
+        {testimonials.map((_, i) => (
           <button
-            key={idx}
-            onClick={() => goToPage(idx)}
-            aria-label={`Go to testimonial ${idx + 1}`}
-            className={`w-4 h-4 rounded-full transition-colors ${
-              idx === page ? "bg-indigo-600" : "bg-indigo-300 hover:bg-indigo-500"
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`w-4 h-4 rounded-full transition-all duration-300 ${
+              i === index ? "bg-indigo-600 scale-110" : "bg-indigo-300 hover:bg-indigo-500"
             }`}
           />
         ))}
-      </div>
+      </div> */}
     </section>
   );
 }
