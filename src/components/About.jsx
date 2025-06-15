@@ -11,8 +11,63 @@ export default function About() {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       <div className="flex flex-col md:flex-row items-center gap-12">
+
+
+      <motion.div
+  className="w-full md:w-1/3 flex justify-center"
+  whileHover={{ scale: 1.05 }}
+  transition={{ type: "spring", stiffness: 300 }}
+>
+  <div className="p-1 rounded-full bg-yellow-500" style={{ backgroundColor: '#FFD700' }}>
+    <img
+      src={profileimage}
+      alt="Profile"
+      className="rounded-full shadow-lg border-4 border-white w-64 h-64 object-cover object-top"
+    />
+  </div>
+   {/* Hover Overlay */}
+    {/* <div className="absolute inset-0 bg-black bg-opacity-50 rounded-full flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+      <div className="text-center text-white">
+        <h3 className="text-xl font-bold">John Doe</h3>
+        <p className="text-sm">3D Artist & Designer</p>
+      </div>
+    </div> */}
+
+
+    {/* <div className="absolute inset-0 rounded-full  bg-black/0 flex items-end justify-center opacity-0 hover:opacity-100 transition-opacity duration-500">
+      <div className="text-center text-white pb-10 transform translate-y-2 hover:translate-y-0 transition-transform duration-500">
+        <h3 className="text-2xl font-bold drop-shadow-md text-yellow-300">Sudhan</h3>
+        <p className="text-base text-gray-200">Animations & VFX </p>
+      </div>
+    </div> */}
+
+    <div className="absolute inset-0 rounded-full bg-black/0 flex items-end justify-center opacity-0 hover:opacity-100 transition-opacity duration-500 ease-in-out">
+  <div className="text-center text-white pb-10 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+    <h3 className="text-2xl font-bold drop-shadow-md text-yellow-300">Sudhan</h3>
+    <p className="text-base text-gray-200">Animations & VFX</p>
+  </div>
+</div>
+
+  
+</motion.div>
+
+
+        {/* <motion.div
+  className="w-full md:w-1/3 flex justify-center"
+  whileHover={{ scale: 1.05 }}
+  transition={{ type: "spring", stiffness: 300 }}
+>
+  <div className="p-1 rounded-full bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500">
+    <img
+      src={profileimage}
+      alt="Profile"
+      className="rounded-full shadow-lg border-4 border-white w-64 h-64 object-cover object-top"
+    />
+  </div>
+</motion.div> */}
+
         
-        <motion.div
+        {/* <motion.div
           className="w-full md:w-1/3 flex justify-center"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
@@ -22,7 +77,7 @@ export default function About() {
             alt="Profile"
             className="rounded-full shadow-lg border-8 border-indigo-200 w-64 h-64 object-cover object-top"
           />
-        </motion.div>
+        </motion.div> */}
 
         {/* Right side - Text content */}
         <div className="w-full md:w-2/3">
