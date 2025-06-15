@@ -31,15 +31,16 @@ export default function About() {
           </h2>
 
           <p className="text-xl text-gray-800 mb-8 leading-relaxed max-w-3xl">
-            I'm a passionate <span className="font-semibold text-indigo-600">VFX & Animation designer</span> with expertise in After Effects, Maya, Blender, and more.
+            I'm a passionate <span className="font-semibold text-indigo-600">Animation & VFX designer</span> with expertise in After Effects, Maya, and more.
             I love bringing stories to life with stunning visuals, combining technical skill with creative vision to craft immersive experiences.
           </p>
 
           <ul className="list-disc list-inside space-y-4 text-gray-700 text-lg max-w-3xl">
             {[
-              "Skills: After Effects, Maya, Blender, Photoshop",
-              "Experience: 2+ years collaborating with film productions, advertising agencies, and game developers",
-              "Projects: Delivered 10+ successful client projects across film, ad, and gaming industries",
+              "Skills: After Effects, Maya, Premiere Pro, Photoshop, Audition, Nuke, Figma",
+              "Freelance creative professional with 2+ years of experience collaborating with film productions, advertising agencies, and game developers on various projects including visual design, motion graphics, and interactive media.",
+              // "Experience: 2+ years collaborating with film productions, advertising agencies, and game developers",
+              "Projects: Delivered 10+ successful client projects across ",
               // "Awards & Certifications: [List your awards, certificates, or relevant achievements here]",
             ].map((item, index) => (
               <motion.li
