@@ -40,7 +40,7 @@ export default function About() {
               "Skills: Photoshop, Premiere Pro, After Effects, Audition, Maya, Nuke, Figma",
               "Experience: Freelance creative professional with 2+ years of experience collaborating with short film productions, advertising agencies, and game developers on various projects including visual design, motion graphics, and interactive media.",
               // "Experience: 2+ years collaborating with film productions, advertising agencies, and game developers",
-              "Projects: Delivered 10+ successful client projects across CGI, 3D modeling, short films, logo creation, brochures, advertisements, and menu card designs.",
+              "Projects: Delivered 10+ successful client projects across CGI, 3D modeling, Short Films, Logo Design, Brochures, Advertisements, and Menu Card Designs.",
               // "Awards & Certifications: [List your awards, certificates, or relevant achievements here]",
             ].map((item, index) => (
               <motion.li
